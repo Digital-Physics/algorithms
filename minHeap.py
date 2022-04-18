@@ -1,6 +1,5 @@
-# Do not edit the class below except for the buildHeap,
+# A heap is a tree but it's organized in a list, not using tree/node class objects with children
 # siftDown, siftUp, peek, remove, and insert methods.
-# Feel free to add new properties and methods to the class.
 class MinHeap:
     def __init__(self, array):
         # Do not edit the line below.
@@ -12,8 +11,9 @@ class MinHeap:
         # use siftDown over siftUp since it is faster for majority of nodes (towards bottom)
         # last parent in tree is needed
         # you don't need to siftUp any leaf nodes so just start with the last parent in heap/tree
-        parent_of_last = (len(array) - 2) // 2
-        for curr_idx in reversed(range(parent_of_last + 1)):  # +1 to include it in range
+        # heap index property: min is 0 index, then l_idx = curr_idx * 2 + 1 and r_idx = curr_idx * 2 + 2
+        first_parent_idx = (len(array) - 2) // 2
+        for curr_idx in reversed(range(first_parent_idx + 1)):  # +1 to include it in range
             self.siftDown(curr_idx, array)
         return array  # for init method
 
