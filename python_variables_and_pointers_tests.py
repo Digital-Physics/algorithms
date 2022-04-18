@@ -53,3 +53,15 @@ print("if a variable is reassigned (not mutated) the pointers will then point to
 print("note: appending is mutating")
 print("note: popping is mutating")
 print("note: concatenation is reassigning")
+
+width = 10
+height = 5
+area = width*height
+print(area)
+width = 20
+print(area)
+# need to reassign area or else it will point to the old version of width in memory
+print("if a variable is reassigned (not mutated) the pointers will then point to different objects. one will point to the stale version.")
+print("also, area is fully evaluated up front is just pointing to the int(50) object")
+area = width*height
+print(area)

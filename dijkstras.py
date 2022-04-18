@@ -8,8 +8,8 @@ def dijkstrasAlgorithm(start, edges):
     min_distances = [float("inf") for _ in range(len(edges))]
     min_distances[start] = 0
 
-    # could have used list since we'd have the index and therefore could do constant time lookup
-    # could have used dictionary/hash with constant time insertions and lookup
+    # could have used list since we'd have the index and therefore could do constant time insertion and retrieval
+    # could have used dictionary/hash with constant time insertions and retrieval
     # all three have constant time ways to check if an element has been visited
     visited = set()
 

@@ -5,15 +5,15 @@ class MinHeap:
         # Do not edit the line below.
         self.heap = self.buildHeap(array)
 
-    # time: O(n) (getting the min (and having a min heap) is quicker than fastest sorting (and having BST))
+    # time: O(n) constructing a min heap and removing the min is quicker than sorting and having BST retrieval
     # space: O(1) swaps of elements in array/heap done in place
     def buildHeap(self, array):
         # use siftDown over siftUp since it is faster for majority of nodes (towards bottom)
         # last parent in tree is needed
-        # you don't need to siftUp any leaf nodes so just start with the last parent in heap/tree
+        # you don't need to siftDown any leaf nodes so just start with the last parent in heap/tree
         # heap index property: min is 0 index, then l_idx = curr_idx * 2 + 1 and r_idx = curr_idx * 2 + 2
-        first_parent_idx = (len(array) - 2) // 2
-        for curr_idx in reversed(range(first_parent_idx + 1)):  # +1 to include it in range
+        last_parent_idx = ((len(array)-1)-1)//2
+        for curr_idx in reversed(range(last_parent_idx + 1)):  # +1 to include it in range
             self.siftDown(curr_idx, array)
         return array  # for init method
 
