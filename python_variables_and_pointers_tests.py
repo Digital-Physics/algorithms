@@ -65,3 +65,22 @@ print("if a variable is reassigned (not mutated) the pointers will then point to
 print("also, area is fully evaluated up front is just pointing to the int(50) object")
 area = width*height
 print(area)
+
+a_list = [1,2,3]
+b = a_list
+# make a copy of list, not a pointer to array.
+# A shallow copy creates a new copy of the list object and then has pointers to the elements in the original
+# Although the elements are integers which are immutable, so we're good.
+# It would be an issue if they were mutable objects in the list
+c = a_list[:]
+
+b[0] = "cat"
+print("notice how c didn't change because it was a shallow copy, and the integers it referenced are not mutable.")
+print(a_list,b,c)
+
+d_list = [[1,2], [3,4], [5,6]]
+e = d_list
+f = d_list[:]
+e[0].append("cat")
+print("notice how f changed because the shallow copy still referenced the objects in the original which were mutate.")
+print(d_list,e,f)
