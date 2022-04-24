@@ -84,3 +84,16 @@ f = d_list[:]
 e[0].append("cat")
 print("notice how f changed because the shallow copy still referenced the objects in the original which were mutate.")
 print(d_list,e,f)
+
+list_a = [1,2,3]
+immutable_tuple = (list_a, 7)
+list_a.append(4)
+print("note that immutable tuples can contain mutable objects! thanks for nothing supposedly immutable tuples!")
+print(immutable_tuple)
+
+try:
+    hash(immutable_tuple)
+except TypeError:
+    print("you can only hash an object if all it's objects are hashable")
+    print(hash(((1,2,3), 7)))
+
