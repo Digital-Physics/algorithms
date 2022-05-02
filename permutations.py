@@ -1,5 +1,5 @@
-# time: O(N**2 N!)
-# space: O(N**2 N!)
+# time: O(N**2 N!) number of recursive calls: N! base cases, which took n calls to get to, with an extra n for concatenating & slicing
+# space: O(N* N!) length of perm * num of permutations
 def getPermutations(array):
     permutations_list = []  # our helper function will append to this
     next_perm_adder(array, [], permutations_list)
