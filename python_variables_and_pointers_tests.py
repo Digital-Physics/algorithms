@@ -97,3 +97,20 @@ except TypeError:
     print("you can only hash an object if all it's objects are hashable")
     print(hash(((1,2,3), 7)))
 
+print("what if we append and assign in one go? do we mutate the original too?")
+test_list = [1,2,3]
+temp = test_list.append(4)
+print(test_list)
+print(temp)
+print(".append() is a method and it doesn't return anything")
+
+test_list2 = [[1,2], 2, 3]
+new_set = test_list2 + [5]
+print("we have two separate objects...")
+print(test_list2)
+print(new_set)
+
+print("...but with shared sub-objects")
+test_list2[0].append(3)
+print(test_list2)
+print(new_set)

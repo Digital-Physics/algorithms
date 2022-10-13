@@ -8,7 +8,6 @@ def staircaseTraversal(height, maxSteps):
 
     while idx < len(possibilities):
         counter = 0
-        idx_for_diff = 0
         print()
         print(possibilities)
 
