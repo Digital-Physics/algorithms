@@ -23,7 +23,7 @@ class SudokuSolver:
                             print("We now just need to start at the beginning of that loop. Recursive call to solve().")
                             print("It's the same problem to solve, but smaller. we are now one step closer to finding a solution")
                             self.solve()
-                    print("Dead end. solve() didn't kick off another solve() (or if got out of for loop to the end/solution).")
+                    print("Dead end. solve() didn't kick off another solve() (or it got out of for loop to the end/solution).")
                     print("=> Our assumption was wrong.")
                     print(f"we exhausted all 9 possibilities for cell {row, col}")
                     print("Backtrack. Set cell back to 0 & increment the last move that lead to dead end. The growing odometer turns over")
