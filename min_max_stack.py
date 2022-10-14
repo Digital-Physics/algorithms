@@ -1,37 +1,48 @@
-# time: O(1) constant time!
-# space: O(1) constant space!
+from __future__ import annotations
+
+
+# time: O(1) constant time
+# space: O(1) constant space
 class MinMaxStack:
-    def __init__(self):
-        # will hold stacks of [min here & below, max here & below, number]
-        # storing this info allows us constant time methods
-        # we do not have to compute min & max after popping through looking at nums in a unsorted stack
+    def __init__(self) -> None:
+        """this function will have a 3-tuple of values at each layer of the stack:
+        [min through this number in the stack, max through this number at this height of the stack, number]"""
+        # storing this info allows us constant time methods; we don't need to take min/max over unsorted stack
         self.min_max_stack = []
 
-    def peek(self):
-        return self.min_max_stack[-1][2]
+    def peek(self) -> int | float | None:
+        return self.min_max_stack[-1][2] if self.min_max_stack else None
 
-    def pop(self):
-        pop = self.min_max_stack.pop()
+    def pop(self) -> int | float | None:
+        return self.min_max_stack.pop()[2] if self.min_max_stack else None
 
-        return pop[2]
-
-    def push(self, number):
-        if len(self.min_max_stack) == 0:
-            temp = [number, number, number]
+    def push(self, number: int | float) -> None:
+        if self.min_max_stack:
+            next_el = (min(self.get_min(), number), max(self.get_max(), number), number)
         else:
-            temp = [self.getMin(), self.getMax(), number]
+            next_el = (number, number, number)
 
-            if number < temp[0]:
-                temp[0] = number
-            elif number > temp[1]:
-                temp[1] = number
+        self.min_max_stack.append(next_el)
 
-            temp[2] = number
+    def get_min(self) -> int | float | None:
+        return self.min_max_stack[-1][0] if self.min_max_stack else None
 
-        self.min_max_stack.append(temp)
+    def get_max(self) -> int | float | None:
+        return self.min_max_stack[-1][1] if self.min_max_stack else None
 
-    def getMin(self):
-        return self.min_max_stack[-1][0]
 
-    def getMax(self):
-        return self.min_max_stack[-1][1]
+test_min_max_stack = MinMaxStack()
+test_min_max_stack.push(7)
+test_min_max_stack.push(6.5)
+print(test_min_max_stack.get_max(), test_min_max_stack.get_min())
+test_min_max_stack.pop()
+print(test_min_max_stack.peek())
+test_min_max_stack.push(3.5)
+print(test_min_max_stack.get_min())
+test_min_max_stack.pop()
+test_min_max_stack.pop()
+test_min_max_stack.pop()
+test_min_max_stack.pop()
+test_min_max_stack.pop()
+test_min_max_stack.pop()
+print(test_min_max_stack.get_max())
