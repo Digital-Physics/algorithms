@@ -72,7 +72,8 @@ def too_ambitious_rev_linked_list3(head: Node2) -> Node2:
     while curr_node is not None:
         # a one-liner won't work becuase you are overwriting curr_node.next info before it is used
         # redefine for for next loop, flip pointer and flip pointer???
-        prev_curr_node, curr_node, curr_node.next = curr_node, curr_node.next, prev_curr_node
+        # prev_curr_node, curr_node, curr_node.next = curr_node, curr_node.next, prev_curr_node
+        curr_node.next, prev_curr_node, curr_node = prev_curr_node, curr_node, curr_node.next
 
     return prev_curr_node
         
@@ -87,7 +88,7 @@ head.next.next.next = Node(4)
 head.next.next.next.next = Node(5)
 
 # Reverse the linked list
-new_head = rev_linked_list2(head)
+new_head = too_ambitious_rev_linked_list3(head)
 
 # Print the reversed linked list
 while new_head is not None:
