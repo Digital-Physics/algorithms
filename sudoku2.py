@@ -1,7 +1,8 @@
 # thanks Computerphile and Prof. Thorsten Altenkirch
 print("think: ~DFS growing odometer (w/ faster numbers on right). can you grow it to length m*n through repeated is_valid guesses?")
 print("once you exhaust all possibilities at one length, backtrack, roll your odometer, and keep searching")
-
+print("backtracking is good for problems w/ constraints that can utilize an is_valid_move function")
+print("it can also be used when generating all the combinations of elements from a given set... say, all 'n choose k' sets")
 
 class SudokuSolver:
     def __init__(self, grid: list[list[int]]) -> None:
