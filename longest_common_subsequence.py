@@ -62,9 +62,10 @@ def longestCommonSubsequence_a(text1: str, text2: str) -> int:
 
 
 def longestCommonSubsequence_j(text1: str, text2: str) -> int:
-    """Break-down DP; A more intuitive way where we start with the the final f(vars), 
-    find the relationship to adjacent inputs vars f(vars +/- delta) which was -1 in this case, 
-    and break it down to the simple base cases... sort of like Mathematical induction"""
+    """Break-down DP; A more intuitive way where we start with the the final f(vars) we want, 
+    find the relationship to adjacent inputs vars f(vars + delta) where delta = -1 in this case because we are breaking-down, 
+    and break it down to the simple base cases... sort of like mathematical induction but in reverse... 
+    Looking for provable (or in the case of DP, easy to compute or reason through) base cases and a relationship from 'n to n+1' to chain it together"""
     i = len(text1) - 1
     j = len(text2) - 1
 
@@ -72,7 +73,9 @@ def longestCommonSubsequence_j(text1: str, text2: str) -> int:
     if i == -1 or j == -1:
         return 0
 
-    # there are three adjacent input variable cells if we are reducing i and j by one. they both increment by -1, or one of the two increment by -1.
+    # adjacent relationship; from "n" to "n - 1" (abstractly)
+    # there are three adjacent input variable cells if we are reducing i/rows and j/cols by one. 
+    # 1) they both increment by -1, 2) i/rows increments by -1, 3) j/cols increment by -1.
     if text1[i]==text2[j]:
         print("if the letters match on their last letter, your answer was 1 more than the previous diagonal box")
         return 1 + longestCommonSubsequence_a(text1[:i], text2[:j])
