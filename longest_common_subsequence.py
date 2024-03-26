@@ -3,7 +3,7 @@
 
 # thought about a trie, but it would still be O(n**2) just to construct it
 # thought about a DP matrix with a cells containing counts and a dictionary that stored letters since last subsequence match that could still be matched on if you 
-# increment one of the strings and look for that letter in the dictionary. . this may be similar to recursively going back in DP matrix for matches, but more complicated.
+# increment one of the strings and look for that letter in the dictionary. this may be similar to recursively going back in DP matrix for matches, but more complicated.
 
 def longestCommonSubsequence(text1: str, text2: str) -> int:
     """Build-up DP. Increment index i and/or j through the strings, 
@@ -62,7 +62,9 @@ def longestCommonSubsequence_a(text1: str, text2: str) -> int:
 
 
 def longestCommonSubsequence_j(text1: str, text2: str) -> int:
-    """DP, but with a more intuitive way"""
+    """Break-down DP; A more intuitive way where we start with the the final f(vars), 
+    find the relationship to adjacent inputs vars f(vars +/- delta) which was -1 in this case, 
+    and break it down to the simple base cases... sort of like Mathematical induction"""
     i = len(text1) - 1
     j = len(text2) - 1
 
@@ -70,7 +72,7 @@ def longestCommonSubsequence_j(text1: str, text2: str) -> int:
     if i == -1 or j == -1:
         return 0
 
-    # if the letters match at the end, your answer was 1 more than the previous diagonal's box
+    # there are three adjacent input variable cells if we are reducing i and j by one. they both increment by -1, or one of the two increment by -1.
     if text1[i]==text2[j]:
         print("if the letters match on their last letter, your answer was 1 more than the previous diagonal box")
         return 1 + longestCommonSubsequence_a(text1[:i], text2[:j])
