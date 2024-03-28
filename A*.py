@@ -2,6 +2,7 @@
 # while heap not empty, worst = w*h (pop off heap and refresh log(w*h) + insert 4*log(w*h))
 # space: O(n) = O(w*h) for minHeap storage
 # A* is an informed search algorithm that uses a heuristic to determine what node to explore out from next
+# Best First Search (at least "best" according to a remaining distance heuristic that doesn't overestimate) 
 def aStarAlgorithm(startRow, startCol, endRow, endCol, graph):
     print("start")
     # matrix_info is just like the input matrix but with more info per node/cell
@@ -20,8 +21,8 @@ def aStarAlgorithm(startRow, startCol, endRow, endCol, graph):
         print()
         print("curr node i, j", curr_node.i, curr_node.j)
         print("distance from start", curr_node.distance_from_start)
-        print("est distance left", curr_node.est_distance_left)
-        print("total", curr_node.total_est_distance)
+        print("est distance left (lower bound)", curr_node.est_distance_left)
+        print("total estimate (lower bound)", curr_node.total_est_distance)
 
         if curr_node.i != endRow or curr_node.j != endCol:
             neighbors = get_valid_neighbors(curr_node, matrix_info)
@@ -43,8 +44,6 @@ def aStarAlgorithm(startRow, startCol, endRow, endCol, graph):
                     nodes_to_check.refresh(neighbor)
 
         # we've seen all the neighbors
-        # it could be processed with over-estimated lengths because it went wrong way around a wall
-        # ...but in that case, we won't need that node anyway in our final path
         curr_node.processed = True
 
     return get_path(endRow, endCol, matrix_info)
@@ -59,6 +58,8 @@ class Node_info():
         self.distance_from_start = 0 if (i == startRow and j == startCol) else None
         # the fact that our graph is also a matrix allows us to estimate a distance to another node we haven't seen
         # our heuristic is the Manhattan dist estimate to the end node, assuming no walls
+        # this heuristic works because it never overestimates the remaining distance...
+        # so if we find the goal, we know there aren't other nodes we could have searched out from which would have gotten there in less steps
         self.est_distance_left = abs(endRow - i) + abs(endCol - j)  # "h" for heuristic
         self.parent = None  # will allow us to trace back path
         self.processed = False  # True after visiting all valid neighbors

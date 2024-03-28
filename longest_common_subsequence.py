@@ -30,7 +30,7 @@ def longestCommonSubsequence(text1: str, text2: str) -> int:
         if text1[i]==text2[j]:
             print("Match. 1 + the value from a move diagonal in the dp matrix, down and to the right. (increment i and j)")
             dp_lcs_matrix[i][j]=1+lcs(i+1, j+1)
-            return dp_lcs_matrix[i][j]
+            return dp_lcs_matrix[i][j]1
         else:
             print("no match, so we take the better of adjacent entries")
             dp_lcs_matrix[i][j]= max(lcs(i, j+1), lcs(i+1, j))
