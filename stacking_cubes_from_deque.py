@@ -1,3 +1,6 @@
+# time complexity: O(test_cases*len_test_case)
+# space complexity: O(test_cases*len_test_case), but in theory this could be made O(len_test_case) if take them in one at a time.
+
 from collections import deque
 
 test_cases = int(input())

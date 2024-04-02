@@ -51,6 +51,7 @@ counter = defaultdict(int)
 for letter in s:
     counter[letter] += 1
 
+# 
 # sorted_list = sorted(counter.items(), key=lambda k, v: (-v, k))
 sorted_list = sorted(counter.items(), key=lambda x: (-x[1], x[0]))
 
