@@ -1,11 +1,12 @@
-list_of_chars = [*input()]
+# list_of_chars = [*input()]
 
 lower_strings = []
 upper_strings = []
 odd_nums = []
 even_nums = []
 
-for char in list_of_chars:
+# for char in list_of_chars:
+for char in input():
     if char.islower():
         lower_strings.append(char)
     elif char.isupper():
