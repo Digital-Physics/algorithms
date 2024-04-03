@@ -1,4 +1,4 @@
-from collections import OrderedDict
+from collections import OrderedDict # ordered by the order in which keys first get put in to the dict
 
 n = int(input())
 od = OrderedDict()
