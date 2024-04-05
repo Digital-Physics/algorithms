@@ -32,3 +32,8 @@ print(string.endswith("world"))    # Output: True
 
 print([(x,y) for x in range(10, -1, -1) for y in range(5, -1, -1)])
 print([[(x,y) for x in range(10, -1, -1)] for y in range(5, -1, -1)])
+
+a_string = "helloThere"
+print([*a_string])
+# print(a_string.split()) # wrong
+# print(a_string.split("")) # wrong
