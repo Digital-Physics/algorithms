@@ -5,7 +5,7 @@ def bfs(n: int, m: int, edges: List[List[int]], s: int) -> List[int]:
     """return distances for each node using a BFS search starting from s.
     nodes are labeled 1-n. m = len(edges)."""
 
-    neighbors_dict = defaultdict(set) 
+    adjacency_dict = defaultdict(set) 
     # edge distance; edges have weight of 6, and -1 means unreachable
     output_list = [-1 for _ in range(n + 1)]  # we are going to let n nodes go from index 1 to n; we will slice into it starting at idx 1 when returned
     
@@ -16,15 +16,15 @@ def bfs(n: int, m: int, edges: List[List[int]], s: int) -> List[int]:
     deq = deque([s])
 
     for k, v in edges:
-        neighbors_dict[k].add(v)
-        neighbors_dict[v].add(k)
+        adjacency_dict[k].add(v)
+        adjacency_dict[v].add(k)
 
     while deq:
         # 1) popleft (pop for DFS stack) and process
         curr_node = deq.popleft()
 
         # 2) add neighbors to queue (or stack for DFS)
-        for neigh in neighbors_dict[curr_node]:
+        for neigh in adjacency_dict[curr_node]:
             if neigh not in seen:
                 seen.add(neigh)
                 output_list[neigh] = output_list[curr_node] + 6
