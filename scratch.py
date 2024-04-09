@@ -1,3 +1,8 @@
+from collections import Counter
+
+print(Counter("aabbbccd").most_common(3))
+
+
 print("python is case sensitive")
 print("A" == "a", "A" == "A")
 
