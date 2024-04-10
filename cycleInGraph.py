@@ -11,7 +11,7 @@ def cycleInGraph(edges):
         seen = {}
 
         while bfs_queue:
-            curr_node = bfs_queue.pop(0)
+            curr_node = bfs_queue.pop(0) # should use deque's .popleft()
             print(curr_node)
             if curr_node == root:
                 return True

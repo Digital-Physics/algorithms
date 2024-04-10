@@ -21,6 +21,7 @@ class Node:
         bfs_queue = []
         bfs_queue.append(self)
 
+        # should use a deque and .popleft()
         while bfs_queue:
             # pop (first) and process
             curr_node = bfs_queue.pop(0)

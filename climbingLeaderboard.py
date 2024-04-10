@@ -1,9 +1,5 @@
-from typing import List
-# The function is expected to return an INTEGER_ARRAY.
-# The function accepts following parameters:
-#  1. INTEGER_ARRAY ranked
-#  2. INTEGER_ARRAY player
 def climbingLeaderboard(ranked: List[int], player: List[int]) -> List[int]:
+    # this leaderboard doesn't increment the ranking on ties... so you could be #2 with four people tied for first
     leaderboard = list(sorted(set(ranked), reverse=True))
     output_list = []
 

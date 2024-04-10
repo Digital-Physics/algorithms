@@ -6,8 +6,10 @@ class ClimbStairs:
 
     def solve(self) -> int:
         # number of ways to get to n: ?, 1, 2... 
-        # but 2 is going to be # of ways from 1 + num ways from 0, so base case for 0 should be = 1 
-        # i, val: (0,1), (1,1)
+        # but 2 is going to be # of ways from 1 + num ways from 0, so base case for 0 or 1 should be = 1 
+        # i, val: (0,1), (1,1) in Dynamic programming matrix
+
+        # was this set up for a breakdown approach, but we ended up building up to it instead?
         if self.n == 0 or self.n == 1:
             return 1
         
@@ -17,7 +19,7 @@ class ClimbStairs:
 
         for _ in range(2, self.n+1):
             ways = ways_to_two_back + ways_to_one_back
-            # reset now
+            # reset for next iteration
             ways_to_two_back, ways_to_one_back = ways_to_one_back, ways 
 
         return ways

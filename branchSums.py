@@ -1,4 +1,4 @@
-# This is the class of the input root. Do not edit it.
+# This is the class of the input root.
 class BinaryTree:
     def __init__(self, value):
         self.value = value

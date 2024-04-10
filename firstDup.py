@@ -1,5 +1,6 @@
 # time: O(n) worst case
 # space: O(1) # take advantage that numbers are only from 1 to n
+# we will never be out of range; we hop around. numbers treating like hash. negative marks seen. if you find a negative after hashing, you've seen that input before.
 def firstDuplicateValue(array):
     for i in range(len(array)):
         if array[i] < 0:
