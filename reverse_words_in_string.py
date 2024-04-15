@@ -1,5 +1,5 @@
 # time: O(n) since we have to go through each character in string
-# space: O(n) since we are storing and/or concatening the stored words
+# space: O(n) since we are storing and/or concatenating the stored words
 # could have made this differently by " ".join() instead of "".join()
 def reverseWordsInString(string):
     list_of_words = []

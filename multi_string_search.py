@@ -21,11 +21,11 @@ def trie_constructor(bigString):
     return trie_dict
 
 
-# to add to trie we need to let the recurssion go down levels to sub-tries
+# to add to trie we need to let the recursion go down levels to sub-tries
 # but to return the entire trie at the end, we pass the root of the trie in each time
 def trie_helper(bigString, trie, sub_trie_dict, i):
     print("process string through index", i)
-    while i < len(bigString):
+    while i < len(bigString): # i think this should be an if not a while (not that it really matters) because we always return a value on one while iteration
         if bigString[i] in sub_trie_dict:
             return trie_helper(bigString, trie, sub_trie_dict[bigString[i]], i + 1)
         else:
@@ -37,7 +37,7 @@ def trie_helper(bigString, trie, sub_trie_dict, i):
 def check_word(word, i, dictionary):
     print("string to check:", word)
     if i < len(word):
-        print("string in dictiornary through", word[i])
+        print("string in dictionary through", word[i])
         if word[i] in dictionary:
             return check_word(word, i + 1, dictionary[word[i]])
         else:

@@ -70,7 +70,7 @@ def too_ambitious_rev_linked_list3(head: Node2) -> Node2:
     prev_curr_node = None
 
     while curr_node is not None:
-        # a one-liner won't work becuase you are overwriting curr_node.next info before it is used
+        # a one-liner won't work because you are overwriting curr_node.next info before it is used. would a reordering help?
         # redefine for for next loop, flip pointer and flip pointer???
         # prev_curr_node, curr_node, curr_node.next = curr_node, curr_node.next, prev_curr_node
         curr_node.next, prev_curr_node, curr_node = prev_curr_node, curr_node, curr_node.next
