@@ -2,6 +2,9 @@ import bisect
 # there is also a binarytree library, but it must be installed
 # why is BST not a standard library?
 # I guess we can just used ordered dictionaries? No, those are based on key insertion order, not the value order
+# Hey, try the add() and remove() methods in SortedList
+# from sortedcontainers import SortedList
+
 
 l = [3, 4, 2, 1, 5]
 
@@ -15,7 +18,7 @@ print(sorted_list)
 # remove items in O(log(n))? No linear O(n)
 idx = bisect.bisect_left(sorted_list, 4)
 # sorted_list.pop(idx) # linear time, in at least part of the list, I think
-del sorted_list[idx] # is this any better?
+del sorted_list[idx] # is this any better? maybe this is why sortedcontainers exists
 print(sorted_list)
 
 idx_l = bisect.bisect_left(sorted_list, 3)

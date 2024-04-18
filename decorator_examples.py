@@ -1,4 +1,4 @@
-import functools
+from functools import cache
 # https://www.youtube.com/watch?v=JgxCY-tbWHA
 
 # example #1
@@ -72,7 +72,7 @@ print(Person.get_species()) # again, no instance needed to be created first
 
 # example 4
 # @functools.cache is an easy way to implement a memoized cache (e.g. def fib(n, memo={}))
-@functools.cache
+@cache
 def fibonacci(n):
     if n < 2:
         return n
@@ -81,4 +81,23 @@ def fibonacci(n):
 # example 5
 # @dataclass decorator is for storing data in a class without implementing __init__, __eq__, __repr__
 # see dataclasses_library.py file
+
+# example 6
+# simple decorator example
+def with_greeting(func):
+    def wrapper(*args, **kwargs):
+        print("Hello World!")
+        return func(*args, **kwargs)
+    
+    return wrapper
+
+@with_greeting
+def add(x, y):
+    """this is a doc string of my function"""
+    return x + y
+
+print("when add function is called, it actually calls the wrapper function now")
+print(add(5, 6))
+print(add.__name__)
+print(add.__doc__)
 
