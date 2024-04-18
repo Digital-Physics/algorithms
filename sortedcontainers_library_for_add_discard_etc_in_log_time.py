@@ -78,6 +78,7 @@ print(sorted_set_with_key)
 print(sorted_set_with_key[:3])
 
 # 3) SortedDict (keys (not values) are maintained in sorted order)
+# compare with: OrderedDict which is maintained by insertion order
 print("", "SortedDict", "", sep="\n")
 
 # notice that it takes in a dict (how else could it work without k: v pairs?), not a list like SortedList and SortedSet
