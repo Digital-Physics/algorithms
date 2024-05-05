@@ -33,5 +33,6 @@ if __name__ == "__main__":
     arr = [170, 45, 75, 90, 802, 24, 2, 66]
     sorted_arr = LSD_radix_sort(arr)
     sorted_arr2 = MSD_radix_sort(arr)
+    
     print("Sorted array is:", sorted_arr)
     print("Sorted array is:", sorted_arr2)
