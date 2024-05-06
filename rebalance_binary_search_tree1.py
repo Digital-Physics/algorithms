@@ -29,7 +29,7 @@ class TreeNode:
 #     if root is None:
 #         return TreeNode(val)
     
-#     if random.randint(0, 1):
+#     if random.choice([False, True]):
 #         root.left = random_insert_into_tree(root.left, val)
 #     else:
 #         root.right = random_insert_into_tree(root.right, val)

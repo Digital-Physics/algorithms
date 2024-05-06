@@ -9,7 +9,7 @@ class TreeNode:
         self.height = 1
 
 class AVLTree:
-    """AVL trees are self balancing Binary Search Trees"""
+    """AVL trees are self-balancing Binary Search Trees"""
     def insert(self, root, key):
         if not root:
             return TreeNode(key)
