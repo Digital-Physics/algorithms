@@ -50,7 +50,7 @@ def getMaxDamageDealt(N: int, H: List[int], D: List[int], B: int) -> float:
     return best
 
 
-def XgetMaxDamageDealt(N: int, H: List[int], D: List[int], B: int) -> float:
+def xgetMaxDamageDealt(N: int, H: List[int], D: List[int], B: int) -> float:
     """
     We'd like to avoid trying every combination of two warriors which will be quadratic len(H)*(len(H)-1)
     We can sort them in n*log(n) time. But this approach isn't correct. We'd at least have to look at ties
@@ -77,6 +77,31 @@ def XgetMaxDamageDealt(N: int, H: List[int], D: List[int], B: int) -> float:
             best = curr
     
     return best
+
+
+def XgetMaxDamageDealt(N: int, H: List[int], D: List[int], B: int) -> float:
+    """wrong approach"""
+    if H[0] > H[1]:
+        i_guy = 0
+        j_guy = 1
+    else:
+        i_guy = 1
+        j_guy = 0
+    
+    # area of first two
+    area = (D[i_guy] + D[j_guy])*H[i_guy]/B + D[j_guy]*H[j_guy]/B
+
+    for i in range(2, len(H)):
+        if (D[i] + D[j_guy])*H[i]/B + D[j_guy]*H[j_guy]/B > area:
+            if (D[i_guy] + D[i])*H[i_guy]/B + D[i]*H[i]/B > (D[i] + D[j_guy])*H[i]/B + D[j_guy]*H[j_guy]/B:
+                area = (D[i_guy] + D[i])*H[i_guy]/B + D[i]*H[i]/B
+                j_guy = i
+            else:
+                area = (D[i] + D[j_guy])*H[i]/B + D[j_guy]*H[j_guy]/B 
+                i_guy = i
+    
+    return area
+
 
 
 if __name__ == "__main__":
