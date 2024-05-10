@@ -49,4 +49,4 @@ def getMinCodeEntryTime(N: int, M: int, C: List[int]) -> int:
 
 if __name__ == "__main__":
     print(getMinCodeEntryTime(10, 4, [9, 4, 4, 8]))
-    print(getMinCodeEntryTime(10, 4, [9, 5, 5, 8]))
+    print(getMinCodeEntryTime(10, 10, [10, 2, 3, 9, 8, 7, 6, 5, 4, 2]))
