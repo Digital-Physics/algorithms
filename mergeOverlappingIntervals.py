@@ -1,5 +1,9 @@
 # time: O(n*log(n)) for the sort
 # space: O(n) for the output we build up
+
+# Note: I think we could do this in linear time O(m) where m is the max value in the intervals. 
+# Just update a list of length m = [1 if number is in any interval else 0] in linear time. Then go through in another linear pass to create the intervals.
+# But this may be slower; it depends on the relative number of intervals to max m.
 def merge_overlapping_intervals(intervals: list[list[int]]) -> list[list[int]]:
     """think of the calendar matching problem with times converted to integers (minutes since midnight)
     remember: first we need to sort based on the starting time. then we initialize a sorted output list w/ first interval.
@@ -7,6 +11,7 @@ def merge_overlapping_intervals(intervals: list[list[int]]) -> list[list[int]]:
     the start time in the next interval to be processed in our for loop over the original input list.
     depending on the comparison/overlap, we either (potentially) update the end time in our output list...
     or finalize that output interval by adding the new interval (because the new interval started after last output interval ended)"""
+
     # n*log(n) sort
     intervals.sort(key=lambda x: x[0])
     output_array = [intervals[0]]
