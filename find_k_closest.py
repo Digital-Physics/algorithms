@@ -40,6 +40,7 @@ def findClosestElements(arr, k, x):
         mid = (left + right) // 2
 
         if x - arr[mid] > arr[mid + k] - x:  # if left side distance > right side distance
+        # if abs(x - arr[mid]) > abs(arr[mid + k] - x):  # abs not needed, but easier to reason through in my head
             left = mid + 1
         else:
             right = mid

@@ -28,7 +28,7 @@ def quicksort(arr: List[int]) -> List[int]:
             return
         
         # else, recursive call
-        partition_pos = partition_via_swaps(arr, low, high)
+        partition_pos = partition_via_swaps2(arr, low, high)
         quicksort_helper(arr, low, partition_pos - 1) # this function only swaps or does nothing on the last step
         quicksort_helper(arr, partition_pos + 1, high)
 
@@ -52,11 +52,29 @@ def quicksort(arr: List[int]) -> List[int]:
                 arr[i], arr[j] = arr[j], arr[i]
 
         # swap pivot val and arr[i]
-        # don't think we need extra line of code shown in https://www.youtube.com/watch?v=9KBwdDEwal8
-        arr[right], arr[i] = arr[i], pivot_val   
+        # don't think we need extra line of code shown in https://www.youtube.com/watch?v=9KBwdDEwal8, but we actually might (kthLargest.py showed it was an issue)
+        if arr[i] > pivot_val:
+            arr[right], arr[i] = arr[i], pivot_val   
         
         # return the sorted pivot position for reference in the recursive calls
         return i
+    
+    def partition_via_swaps2(arr, left, right):
+        i = left
+        pivot_val = arr[right]
+        pivot_idx = right
+
+        while i < pivot_idx:
+            if arr[i] > pivot_val: 
+                arr[i], arr[pivot_idx - 1] = arr[pivot_idx - 1], arr[i]
+                arr[pivot_idx], arr[pivot_idx - 1] = arr[pivot_idx - 1], arr[pivot_idx]
+                i -= 1
+                pivot_idx -= 1
+                
+            i += 1
+
+        return pivot_idx
+        
     
     quicksort_helper(arr, 0, len(arr) - 1)
 
