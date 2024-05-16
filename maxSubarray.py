@@ -8,7 +8,8 @@ def maxSubArray(nums: List[int]) -> int:
 
     # Always prepend sequence if it's positive =>
     # drop subarray as soon as prefix cumulative total becomes negative;
-    # note: we are forced to return at least one number if they are all negative
+    # note: are we forced to return at least one number if they are all negative?
+    
     def kadane_helper(nums2: List[int], best: int) -> int:
         prefix_sum = 0 # reset on each recursive call (while previous best is passed as argument)
 
