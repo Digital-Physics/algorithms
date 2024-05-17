@@ -7,12 +7,14 @@ def generateParenthesis(n: int) -> List[str]:
     # n = 2: ["()()", "(())"] (we wrapped the previous lists, or we put at the end, or the beginning)
     # but we don't want duplicates
 
-    if n == 1:
-        return ["()"]
+    # if n == 1:
+    #     return ["()"]
 
-    solutions = {"()"}
+    # solutions = {"()"}
+    solutions = {""}
 
-    for i in range(2, n + 1):
+    # for i in range(2, n + 1):
+    for i in range(1, n + 1):
         next_solutions = set() # we don't want duplicate strings; new var; don't mutate solutions while iterating over
 
         for solution in solutions:
@@ -25,6 +27,8 @@ def generateParenthesis(n: int) -> List[str]:
     return list(solutions)
 
 if __name__ == "__main__":
+    print(generateParenthesis(1))
+    print(generateParenthesis(2))
     print(generateParenthesis(3))
 
 

@@ -1,7 +1,7 @@
 # time: O(m*n)
 # space: O(m*n) for the output array
 def spiralTraverse(array):
-    traversing_row = True  # flips after each for loop
+    traversing_row = True  # (vs col) flips after each for loop
     row_forward, col_forward = True, True  # doesn't flip after each for loop
     output_array = []
 
@@ -38,4 +38,7 @@ def spiralTraverse(array):
                 col_forward = True
                 traversing_row = True
 
-    return output_arrayy
+    return output_array
+
+if __name__ == "__main__":
+    print(spiralTraverse([[1,2,3],[4,5,6],[7,8,9]]))
