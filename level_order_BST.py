@@ -14,7 +14,7 @@ def get_level_order(root: Optional[BinaryTree]) -> None:
         """return list of nodes from the top level to the bottom level and from left to right in the levels"""
         nonlocal output
         if root is None:
-            return
+            return output
         
         q = deque([root])
 
@@ -35,6 +35,29 @@ def get_level_order(root: Optional[BinaryTree]) -> None:
 
     return output
 
+def get_level_order2(root: Optional[BinaryTree]) -> None:
+    if root is None:
+        return []
+    
+    output = []
+
+    q = deque([root])
+
+    while q:
+        # pop and
+        curr_node = q.popleft()
+
+        # process
+        output.append(curr_node.value)
+        
+        # add neighbors
+        if curr_node.left:
+            q.append(curr_node.left)
+        if curr_node.right:
+            q.append(curr_node.right)
+
+    return output
+
 if __name__ == "__main__":
     root = BinaryTree(1)
     root.left = BinaryTree(2)
@@ -46,3 +69,6 @@ if __name__ == "__main__":
     root.left.left.left = BinaryTree(8)
 
     print(get_level_order(root))
+    print(get_level_order2(None))
+    print(get_level_order(root))
+    print(get_level_order2(None))
