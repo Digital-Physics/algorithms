@@ -43,8 +43,9 @@ class Node:
 def findPath(root, path, k):
     if root is None:
         return False
- 
+    
     path.append(root.key) # discarded at end if not used
+    print(root.key, path, k)
  
     if root.key == k:
         return True
