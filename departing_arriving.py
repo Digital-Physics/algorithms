@@ -6,7 +6,8 @@ def lowest_cost(d: List[int], r: List[int]) -> int:
     """calc the lowest cost of a roundtrip flight. inputs are lists that represent the cost to fly on that day.
     this is the max of an upper triangular matrix, with return_flight_idx/cols >= departure_day/rows, which would take O(n**2). 
     
-    we'll try to do it in O(log(n))
+    we'll do it in O(n*log(n)) by having an ordered departure list (O(n*log(n)) step)
+    that we'll only have to iterate through once over an outer for loop (O(n) step)
     """
 
     # O(n*log(n))

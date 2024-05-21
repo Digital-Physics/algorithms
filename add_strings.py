@@ -1,10 +1,8 @@
 def add_strings(s1: str, s2: str) -> str:
     """add nums that are too big for ints and are represented as strings"""      
     carry_digit = 0
-    
     i_1 = len(s1) - 1
     i_2 = len(s2) - 1
-
     output = []
 
     while i_1 > -1 or i_2 > -1 or carry_digit > 0:

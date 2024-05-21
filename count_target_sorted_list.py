@@ -5,7 +5,6 @@ def count_target(l: List[int], target: int) -> int:
     """count: lists are sorted"""
 
     # find if it exists in log time
-    target_exists = False
     insertion_idx = bisect_left(l, target)
     target_exists = insertion_idx < len(l) and l[insertion_idx] == target # first checks that it isn't the next idx beyond the length
 
