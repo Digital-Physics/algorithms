@@ -3,9 +3,13 @@ from collections import defaultdict
 
 def longestConsecutive(nums: List[int]) -> int:
     """returns count of longest consecutive sequence of integers in O(n) time. 
-    we can start at any node and clear the entire sequence it is part of in linear time.
-    although we move backwards sometimes, we never see the same int twice 
-    (because we pop() & remove() before the next round, and we jump back to where we started at n after moving backwards)"""
+    we can start at any number and clear the entire sequence it is part of in linear time.
+
+    1) put all items in a set
+    2) pop a number off set and see how many numbers are connected to its left, one at a time, removing them from the set and counting the prefix length.
+    3) similarly, count how many consecutive numbers are to the right of it.
+    4) compare (left_look_count + 1 (self) + right_look_count) to current_best
+    """
     longest = 0
     num_set = set(nums) # linear time; 1) allows to do constant time checks going forward and 2) eliminates analyzing duplicates
 
